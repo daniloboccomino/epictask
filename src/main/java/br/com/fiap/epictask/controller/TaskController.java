@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.fiap.epictask.model.Task;
+
 @Controller // determina a classe como Controller para mapeamento de rotas
 public class TaskController {
 
@@ -15,7 +17,7 @@ public class TaskController {
 	}
 	
 	@PostMapping("/tasks")
-	public String save() {
+	public String save(Task task) {
 		return "tasks";
 	}
 
