@@ -2,8 +2,11 @@ package br.com.fiap.epictask.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,14 +31,15 @@ public class TaskController {
 	}
 	
 	@PostMapping("/tasks")
-	public String save(Task task) {
+	public String save(@Valid Task task, BindingResult result) {
+		if (result.hasErrors()) return "tasknew";
 		repository.save(task);
 		return "tasks";
 	}
 
 	// metodo de retorno da pagina de cadastro da rota de tasks
 	@RequestMapping("/tasks/new") // define a rota que chama a pagina
-	public String create() {
+	public String create(Task task) {
 		return "tasknew"; // nome do arquivo html que deve ser renderizado (resources/templates/tasknew.html)
 	}
 
