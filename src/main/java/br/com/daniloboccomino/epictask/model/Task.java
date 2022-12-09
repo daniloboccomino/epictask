@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /*
 o projeto Lombok facilita a criação/uso de códigos na classe da entidade
@@ -20,8 +24,15 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Title is required") // != null && != "" && != " "
     private String title;
+
+    @Size(min = 3, message = "Description must contain at least 3 characters")
     private String description;
+
+    @Min(value = 10, message = "The minimum score is 10")
+    @Max(value = 100, message = "The maximum score is 100")
     private int points;
 
 }

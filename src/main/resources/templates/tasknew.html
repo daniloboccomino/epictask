@@ -10,15 +10,18 @@
 
 <h2>New Task</h2>
 
-<form action="/task" method="post">
+<form action="/task" method="post" th:object="${task}">
     <label for="title">Title</label>
-    <input name="title" id="title">
+    <input name="title" id="title" th:field="*{title}">
+    <span th:errors="*{title}"></span>
 
     <label for="description">Description</label>
-    <textarea name="description" id="description"></textarea>
+    <textarea name="description" id="description" th:field="*{description}"></textarea>
+    <span th:errors="*{description}"></span>
 
     <label for="points">Points</label>
-    <input type="range" name="points" id="points">
+    <input type="range" min="10" max="100" name="points" id="points" th:field="*{points}">
+    <span th:errors="*{points}"></span>
 
     <button>Create</button>
 </form>
