@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class TaskController {
@@ -17,8 +18,8 @@ public class TaskController {
     private TaskRepository repository;
 
     @GetMapping("/task")
-    public String index() {
-        return TASK;
+    public ModelAndView index() {
+        return new ModelAndView(TASK).addObject("tasks", repository.findAll());
     }
 
     @GetMapping("/task/new")
