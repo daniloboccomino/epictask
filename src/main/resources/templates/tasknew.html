@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Epic Task</title>
+</head>
+<body>
+
+<h2>New Task</h2>
+
+<form action="/task" method="post">
+    <label for="title">Title</label>
+    <input name="title" id="title">
+
+    <label for="description">Description</label>
+    <textarea name="description" id="description"></textarea>
+
+    <label for="points">Points</label>
+    <input type="range" name="points" id="points">
+
+    <button>Create</button>
+</form>
+
+</body>
+</html>
